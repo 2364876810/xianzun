@@ -1,0 +1,106 @@
+html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+}
+*{margin:0;padding:0;}
+html,body{
+  height:100%;
+  overflow:hidden;
+}
+/* 背景容器层，所有背景在这里轮播 */
+.bg-container{
+  width:100%;
+  height:100%;
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+.content{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+/* 公共背景样式 */
+.bg-item{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;
+  /* blur虚化滤镜 */
+  filter: blur(0px);
+  /* 动画：总时长 2s 无限循环 */
+  animation: bgLoop 2s infinite;
+}
+.text-img{
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 150px;
+}
+.text-img2{
+    position: absolute;
+    bottom: 0%;
+    left: 20%;
+    width: 1000px;
+}
+.bg1{
+  background-image: url("../image/1.jpg");
+  animation-delay: 0s;
+}
+/* 第2张背景 */
+.bg2{
+  background-image: url("../image/2.jpg");
+  animation-delay: -0.5s;
+}
+/* 第3张背景 */
+.bg3{
+  background-image: url("../image/3.jpg");
+  animation-delay: -1s;
+}
+/* 第4张背景 */
+.bg4{
+  background-image: url("../image/4.jpg");
+  animation-delay: -1.5s;
+}
+@keyframes bgLoop {
+  0%{
+    opacity:0;
+    filter: blur(8px); /* 开始模糊 */
+  }
+  10%{
+    opacity:1;
+    filter: blur(0px); /* 慢慢变清晰 */
+  }
+  35%{
+    opacity:1;
+    filter: blur(0px); /* 保持清晰展示 */
+  }
+  45%{
+    opacity:0;
+    filter: blur(8px); /* 虚化淡出 */
+  }
+  100%{
+    opacity:0;
+    filter: blur(8px);
+  }
+}
+
+/* 逆流河文字按钮，放在最上层，不受背景动画影响 */
+.link-box{
+  position: absolute;
+  top:15%;
+  right:20%;
+  z-index:99; /* 提高层级，保证永远在背景上面 */
+}
+.text-img:hover{
+  transform: scale(1.05);
+  transition:0.3s;
+}
+@keyframes fadeIn {
+  from{opacity:0;transform: translateY(20px);}
+  to{opacity:1;transform: translateY(0);}
+}
